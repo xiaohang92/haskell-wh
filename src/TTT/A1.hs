@@ -20,13 +20,13 @@ _INVALID_MOVE_ :: Move
 _INVALID_MOVE_ = (-1, -1)
 
 -- Q#05
+_SEP_ :: String
+_SEP_ = "_|_"
 
-_SEP_ = undefined
+-- Q#06X
 
--- Q#06
-
-data Square
-
+data Square = X | O | Empty
+    deriving (Show, Eq)
 -- Q#07
 
 data GameState
