@@ -29,24 +29,42 @@ data Square = X | O | Empty
     deriving (Show, Eq)
 -- Q#07
 
-data GameState
-
+data GameState = XWon | OWon | Tie | InProgress
+    deriving (Show, Eq)
 -- Q#08
+type Player = Square
+type Row = [Square]
+type Line = [Square]
+type Board = [Row]
 
 -- Q#09
+getFirstPlayer :: Bool -> Player
+getFirstPlayer isFirstPlayer = 
+    if isFirstPlayer 
+        then X
+        else O
 
-getFirstPlayer = undefined
-
-getFirstPlayer_ = undefined
+getFirstPlayer_ :: Bool -> Player
+getFirstPlayer_ isFirstPlayer
+    | isFirstPlayer = X
+    | otherwise = O
 
 -- Q#10
-
-showGameState = undefined
+showGameState :: GameState -> String
+showGameState gameState = case gameState of
+    XWon -> "Player X won the game"
+    OWon -> "Player O won the game"
+    Tie -> "The game is a tie"
+    InProgress -> "The game is in progress"
 
 -- Q#11
-
-switchPlayer = undefined
+switchPlayer :: Player -> Player
+switchPlayer X = O
+switchPlayer O = X
+switchPlayer Empty = Empty
 
 -- Q#12
-
-showSquare = undefined
+showSquare :: Square -> String
+showSquare X = "X"
+showSquare O = "O"
+showSquare Empty = "_"
